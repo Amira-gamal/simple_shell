@@ -16,24 +16,30 @@
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
+/* _str_.c */
+int _slen(char *);
+int _scom(char *, char *);
+char *start(const char *, const char *);
+char *_scat(char *, char *);
 
-/* string_functions.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
 
-/* string_functions2.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
+/* _str_2.c */
+char *_scpy(char *, char *);
+char *_sdup(const char *);
+void _put(char *);
 int _putchar(char);
 
-/* string_functions3.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+/* _str_3.c  */
+char *_sncpy(char *, char *, int);
+char *_sncat(char *, char *, int);
+char *_schr(char *, char);
 
-/* string_functions4.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+
+/* mem.c */
+char *mem(char *, char, unsigned int);
+void _free_(char **);
+void *_realloc_(void *, unsigned int, unsigned int);
+
+/* mem2.c */
+int _bfr_(void **);
+
