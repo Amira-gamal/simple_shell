@@ -17,7 +17,7 @@ char *_mem(char *x, char by, unsigned int z)
 }
 
 /**
- * _free - frees a string
+ * _free_ - frees a string
  * @z: string
  */
 void _free_(char **z)
