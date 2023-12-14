@@ -17,6 +17,8 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
+#define CONVERT_LOWERCASE
+#define CONVERT_UNSIGNED
 
 /**
  * struct list - singly linked list
@@ -108,4 +110,10 @@ int is_del(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-
+/* erratoi_.c */
+int _eatoi(char *);
+void p_error(inf_t *, char *);
+int p_deci(int, int);
+char *conve_num(long int, int, int);
+void rm_com(char *)
+;
