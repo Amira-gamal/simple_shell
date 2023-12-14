@@ -17,9 +17,8 @@
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
 
-#define CONVERT_LOWERCASE
-#define CONVERT_UNSIGNED
-
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
 /**
  * struct list - singly linked list
  * @num: the number field
@@ -115,5 +114,18 @@ int _eatoi(char *);
 void p_error(inf_t *, char *);
 int p_deci(int, int);
 char *conve_num(long int, int, int);
-void rm_com(char *)
-;
+void rm_com(char *);
+
+/*linked_lists.c*/
+list_t *_add_nod(list_t **, const char *, int);
+list_t *_add_nod_end(list_t **, const char *, int);
+size_t p_list_s(const list_t *);
+int del_nod_index(list_t **, unsigned int);
+void free_list(list_t **);
+
+/* linked_lists2.c module */
+size_t list_len(const list_t *);
+char **list_strings(list_t *);
+size_t print_list(const list_t *);
+list_t *starts_with(list_t *, char *, char);
+ssize_t node_index(list_t *, list_t *);
