@@ -16,6 +16,64 @@
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
+
+
+/**
+ * struct list - singly linked list
+ * @num: the number field
+ * @str: a string
+ * @next: points to the next node
+ */
+typedef struct list
+{
+	int num;
+	char *str;
+	struct liststr *next;
+} list_t;
+
+/**
+ *struct passinfo - contains pseudo-arguements to pass into a function
+ *@arg: a string generated from getline
+ *@argv: an array of strings
+ *@path: a string path
+ *@argc: the argument count
+ *@line_count: the error count
+ *@err_num: the error code
+ *@linecount_flag: if on count this line of input
+ *@fname: the program filename
+ *@env: linked list local copy
+ *@environ: custom modified copy
+ *@history: the history node
+ *@alias: the alias node
+ *@env_changed: on if environ
+ *@status: the return status of the last command
+ *@cmd_buf: address of pointer to cmd_buf
+ *@cmd_buf_type: CMD_type ||, &&, ;
+ *@readfd: the fd from which to read
+ *@histcount: the history line
+ */
+typedef struct passinformation
+{
+    list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+    int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+    char **cmd_buf;
+	int cmd_buf_type;
+	int readfd;
+	int histcount;
+    char *arg;
+	char **argv;
+	char *path;
+} inf_t;
+
 /* _str_.c */
 int _slen(char *);
 int _scom(char *, char *);
@@ -42,4 +100,12 @@ void *_realloc_(void *, unsigned int, unsigned int);
 
 /* mem2.c */
 int _bfr_(void **);
+
+
+/* inter_.c */
+int _inter_(inf_t *);
+int is_del(char, char *);
+int _isalpha(int);
+int _atoi(char *);
+
 
