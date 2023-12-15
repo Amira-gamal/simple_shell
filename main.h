@@ -129,3 +129,10 @@ char **list_strings(list_t *);
 size_t print_list(const list_t *);
 list_t *starts_with(list_t *, char *, char);
 ssize_t node_index(list_t *, list_t *);
+
+/*error.c*/
+void _eput(char *);
+int _echar(char);
+int _putf(char c, int fd);
+int _putsf(char *str, int fd);
+
