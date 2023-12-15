@@ -93,6 +93,9 @@ char *_sncpy(char *, char *, int);
 char *_sncat(char *, char *, int);
 char *_schr(char *, char);
 
+/* _str_4.c */
+char **stow(char *, char *);
+char **stow2(char *, char);
 
 /* mem.c */
 char *mem(char *, char, unsigned int);
@@ -121,7 +124,7 @@ list_t *_add_nod(list_t **, const char *, int);
 list_t *_add_nod_end(list_t **, const char *, int);
 size_t p_list_s(const list_t *);
 int del_nod_index(list_t **, unsigned int);
-void free_list(list_t **);
+void f_list(list_t **);
 
 /* linked_lists2.c module */
 size_t list_len(const list_t *);
@@ -136,3 +139,19 @@ int _echar(char);
 int _putf(char c, int fd);
 int _putsf(char *str, int fd);
 
+/* information.c module */
+void c_info(inf_t *);
+void s_info(inf_t *, char **);
+void f_info(inf_t *, int);
+
+/* enviro.c module */
+char *_getenviro(inf_t *, const char *);
+int _myenvrio(inf_t *);
+int _setenvrio(inf_t *);
+int _unsetenvrio(inf_t *);
+int populate_enviro_lis(inf_t *);
+
+/* enviro2.c module */
+char **get_environ(inf_t *);
+int _unsetenviron(inf_t *, char *);
+int _setenviron(inf_t *, char *, char *);
