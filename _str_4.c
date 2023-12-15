@@ -54,7 +54,7 @@ char **stow(char *s, char *d)
  * @d: the delimeter
  * Return: a pointer to an array of strings, or NULL on failure
  */
-char **strtow2(char *s, char d)
+char **stow2(char *s, char d)
 {
 	int i, j, k, m, numw = 0;
 	char **n;

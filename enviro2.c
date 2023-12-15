@@ -48,7 +48,7 @@ int _unsetenviron(inf_t *f, char *v)
 }
 
 /**
- * _setenviro - Initialize a new environment variable
+ * _setenviron - Initialize a new environment variable
  * @f: Structure containing potential arguments.
  * @v: the string env var property
  * @val: the string env var value

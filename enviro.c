@@ -2,10 +2,10 @@
 
 /**
  * _myenviro - print current environment
- * @n: Structure containing potential arguments
+ * @f: Structure containing potential arguments
  * Return: Always 0
  */
-int _myenvrio(inf_t *f)
+int _myenviro(inf_t *f)
 {
 	p_list_s(f->env);
 	return (0);
@@ -17,7 +17,7 @@ int _myenvrio(inf_t *f)
  * @n: env var name
  * Return: the value
  */
-char *_getenvrio(inf_t *f, const char *n)
+char *_getenviro(inf_t *f, const char *n)
 {
 	list_t *node = f->env;
 	char *p;
@@ -33,7 +33,7 @@ char *_getenvrio(inf_t *f, const char *n)
 }
 
 /**
- * _setenvrio - Initialize a new environment variable
+ * _setenviro - Initialize a new environment variable
  * @f: Structure containing potential arguments
  *  Return: Always 0
  */
