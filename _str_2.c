@@ -75,7 +75,7 @@ void _put(char *s)
 
 	if (!s)
 		return;
-	while (s[i] != '\0')
+	for (i = 0; s[i] != '\0'; s++)
 	{
 		_putchar(s[i]);
 		i++;

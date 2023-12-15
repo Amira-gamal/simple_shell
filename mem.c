@@ -33,30 +33,33 @@ void _free_(char **z)
 
 /**
  * _realloc_ - reallocates memory
- * @x: pointer to previous malloc'ated block
+ * @ptr: pointer to previous malloc'ated block
  * @old_size: the byte size of the old
  * @new_size: the byte size of the new
  *
  * Return: pointer to da ol'block nameen.
  */
-void *_realloc_(void *x, unsigned int old_size, unsigned int new_size)
+
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *z;
+	unsigned int i, min_size;
+	void *new_ptr;
 
-	if (!x)
-		return (malloc(new_size));
-	if (!new_size)
-		return (free(x), NULL);
 	if (new_size == old_size)
-		return (x);
-
-	z = malloc(new_size);
-	if (!z)
+		return (ptr);
+	if (ptr == NULL)
+		return (malloc(new_size));
+	if (new_size == 0)
+	{
+		free(ptr);
 		return (NULL);
-
-	old_size = old_size < new_size ? old_size : new_size;
-	while (old_size--)
-		z[old_size] = ((char *)x)[old_size];
-	free(x);
-	return (z);
+	}
+	new_ptr = malloc(new_size);
+	if (new_ptr == NULL)
+		return (NULL);
+	min_size = (old_size < new_size) ? old_size : new_size;
+	for (i = 0; i < min_size; i++)
+		((char *)new_ptr)[i] = ((char *)ptr)[i];
+	free(ptr);
+	return (new_ptr);
 }

@@ -40,35 +40,24 @@ int _isalpha(int x)
 
 /**
  *_atoi - converts a string to an integer
- *@str: the string
+ *@s: the string
  *Return: 0 if no numbers in string, converted number otherwise
  */
 
-int _atoi(char *str)
+int _atoi(char *s)
 {
-	int i, x = 1, y = 0, z;
-	unsigned int r = 0;
+	int x = 1;
+	unsigned int i = 0;
 
-	for (i = 0;  str[i] != '\0' && y != 2; i++)
-	{
-		if (str[i] == '-')
+	do {
+		if (*s == '-')
 			x *= -1;
-
-		if (str[i] >= '0' && str[i] <= '9')
-		{
-			y = 1;
-			r *= 10;
-			r += (str[i] - '0');
-		}
-		else if (y == 1)
-			y = 2;
+		else if (*s >= '0' && *s <= '9')
+			i = (i * 10) + (*s - '0');
+		else if (i > 0)
+			break;
 	}
-
-	if (x == -1)
-		z = -r;
-	else
-		z = r;
-
-	return (z);
+	while (*s++)
+		;
+	return (i * x);
 }
-
