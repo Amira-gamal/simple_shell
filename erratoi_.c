@@ -118,7 +118,7 @@ char *conve_num(long int i, int b, int f)
 }
 
 /**
- * rm_comm - replaces first instance of '#' with '\0'
+ * rm_com - replaces first instance of '#' with '\0'
  * @b: address of the string
  * Return: Always 0;
  */

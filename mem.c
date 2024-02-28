@@ -32,7 +32,7 @@ void _free_(char **z)
 }
 
 /**
- * _realloc_ - reallocates memory
+ * _realloc - reallocates memory
  * @ptr: pointer to previous malloc'ated block
  * @old_size: the byte size of the old
  * @new_size: the byte size of the new
