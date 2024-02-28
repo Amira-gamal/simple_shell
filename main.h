@@ -155,3 +155,4 @@ int populate_enviro_lis(inf_t *);
 char **get_environ(inf_t *);
 int _unsetenviron(inf_t *, char *);
 int _setenviron(inf_t *, char *, char *);
+#endif
