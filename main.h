@@ -55,22 +55,22 @@ typedef struct list
  */
 typedef struct passinformation
 {
-    list_t *env;
+	list_t *env;
 	list_t *history;
 	list_t *alias;
 	char **environ;
 	int env_changed;
 	int status;
-    int argc;
+       	int argc;
 	unsigned int line_count;
 	int err_num;
 	int linecount_flag;
 	char *fname;
-    char **cmd_buf;
+	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
-    char *arg;
+	char *arg;
 	char **argv;
 	char *path;
 } inf_t;
