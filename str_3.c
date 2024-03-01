@@ -1,64 +1,74 @@
-#include "main.h"
+#include "shell.h"
 
 /**
-* _strncpy - a function that copys the strings
-* @dest: Destination of the pointer to the string
-* @src: The source value
-* @n: The copy limit
-* Return: char value
-*/
-
+ **_strncpy - copies a string
+ *@dest: the destination string to be copied to
+ *@src: the source string
+ *@n: the amount of characters to be copied
+ *Return: the concatenated string
+ */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i;
+	int i, j;
+	char *s = dest;
 
-	for (i = 0; src[i] != '\0' && i < n; i++)
-		dest[i]	= src[i];
-	while (i < n)
+	i = 0;
+	while (src[i] != '\0' && i < n - 1)
 	{
-		dest[i++] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (dest);
+	if (i < n)
+	{
+		j = i;
+		while (j < n)
+		{
+			dest[j] = '\0';
+			j++;
+		}
+	}
+	return (s);
 }
 
 /**
-* _strncat - concatenates n bytes from a string to another
-* @dest: destination string
-* @src: source string
-* @n: an input integer
-* Return: a pointer to the resulting string dest
-*/
-
+ **_strncat - concatenates two strings
+ *@dest: the first string
+ *@src: the second string
+ *@n: the amount of bytes to be maximally used
+ *Return: the concatenated string
+ */
 char *_strncat(char *dest, char *src, int n)
 {
-	int i, x;
+	int i, j;
+	char *s = dest;
 
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-	for (x = 0; x < n &&  src[x] != '\0'; x++)
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < n)
 	{
-		dest[i + x] = src[x];
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	dest[i + x] = '\0';
-	return (dest);
+	if (j < n)
+		dest[i] = '\0';
+	return (s);
 }
 
 /**
-* _strchr - function that locates a character in a string
-*@s: first value -char
-*@c: second value - char
-* Return: char with result
-*/
-
+ **_strchr - locates a character in a string
+ *@s: the string to be parsed
+ *@c: the character to look for
+ *Return: (s) a pointer to the memory area s
+ */
 char *_strchr(char *s, char c)
 {
-	int i;
+	do {
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
-	for (i = 0; s[i] >= '\0'; i++)
-	{
-		if (s[i] == c)
-			return (s + i);
-	}
-	return ('\0');
+	return (NULL);
 }
-

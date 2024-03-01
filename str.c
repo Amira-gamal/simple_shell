@@ -1,47 +1,30 @@
-#include "main.h"
+#include "shell.h"
 
 /**
-* _strcat - a function that concatenates two strings.
-* @dest: an input string
-* @src: an input string
-* Return: A pointer to the resulting string
-*/
-
-char *_strcat(char *dest, char *src)
-{
-	int i, x;
-
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-	for (x = 0; src[x] != '\0'; x++)
-	{
-		dest[i++] = src[x];
-	}
-	return (dest);
-}
-/**
-* _strlen - returns the length of a string
-* @s: string to evaluate
-* Return: the length of the string
-*/
-
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
+ *
+ * Return: integer length of string
+ */
 int _strlen(char *s)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; *s != '\0'; s++)
-	{
+	if (!s)
+		return (0);
+
+	while (*s++)
 		i++;
-	}
 	return (i);
 }
 
 /**
-* _strcmp - compares two strings
-* @s1: first string to compare
-* @s2: second string to compare
-* Return: The difference s1 - s2
-*/
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
+ *
+ * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ */
 int _strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2)
@@ -59,15 +42,34 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * starts_with - checks if needle starts with haystack
- * @haystac: string to search
- * @needl: the substring to find
+ * @haystack: string to search
+ * @needle: the substring to find
+ *
  * Return: address of next char of haystack or NULL
  */
-char *starts_with(const char *haystac, const char *needl)
+char *starts_with(const char *haystack, const char *needle)
 {
-	while (*needl)
-		if (*needl++ != *haystac++)
+	while (*needle)
+		if (*needle++ != *haystack++)
 			return (NULL);
-	return ((char *)haystac);
+	return ((char *)haystack);
 }
 
+/**
+ * _strcat - concatenates two strings
+ * @dest: the destination buffer
+ * @src: the source buffer
+ *
+ * Return: pointer to destination buffer
+ */
+char *_strcat(char *dest, char *src)
+{
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
+}
