@@ -1,4 +1,4 @@
-
+#include "main.h"
 /**
  * _is_cmd - determines if a file is an executable command
  * @f: the info struct
@@ -65,15 +65,15 @@ char *_find_path(info_t *f, char *pstr, char *c)
 	{
 		if (!pstr[i] || pstr[i] == ':')
 		{
-			path = _dup_chars(pstr, curr_pos, i);
-			if (!*path)
-				_strcat(p, cmd);
+			p = _dup_chars(pstr, curr_pos, i);
+			if (!*p)
+				_strcat(p, c);
 			else
 			{
 				_strcat(p, "/");
-				_strcat(p, cmd);
+				_strcat(p, c);
 			}
-			if _is_cmd(f, p))
+			if (_is_cmd(f, p))
 				return (p);
 			if (!pstr[i])
 				break;

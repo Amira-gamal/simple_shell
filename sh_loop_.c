@@ -36,7 +36,7 @@ int _hsh_(info_t *f, char **v)
 		exit(f->status);
 	if (builtin_ret == -2)
 	{
-		if (info->err_num == -1)
+		if (f->err_num == -1)
 			exit(f->status);
 		exit(f->err_num);
 	}
@@ -87,7 +87,7 @@ void f_cmd(info_t *f)
 	int i, k;
 
 	f->path = f->argv[0];
-	if (info->linecount_flag == 1)
+	if (f->linecount_flag == 1)
 	{
 		f->line_count++;
 		f->linecount_flag = 0;

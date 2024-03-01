@@ -19,12 +19,9 @@ char *_strcat(char *dest, char *src)
 	}
 	return (dest);
 }
-
-
 /**
 * _strlen - returns the length of a string
 * @s: string to evaluate
-*
 * Return: the length of the string
 */
 
@@ -64,7 +61,6 @@ int _strcmp(char *s1, char *s2)
  * starts_with - checks if needle starts with haystack
  * @haystac: string to search
  * @needl: the substring to find
- *
  * Return: address of next char of haystack or NULL
  */
 char *starts_with(const char *haystac, const char *needl)
@@ -73,25 +69,5 @@ char *starts_with(const char *haystac, const char *needl)
 		if (*needl++ != *haystac++)
 			return (NULL);
 	return ((char *)haystac);
-}
-
-/**
-* _strcat - a function that concatenates two strings.
-* @dest: an input string
-* @src: an input string
-* Return: A pointer to the resulting string
-*/
-
-char *_strcat(char *dest, char *src)
-{
-	int i, x;
-
-	for (i = 0; dest[i] != '\0'; i++)
-		;
-	for (x = 0; src[x] != '\0'; x++)
-	{
-		dest[i++] = src[x];
-	}
-	return (dest);
 }
 
