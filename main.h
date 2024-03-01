@@ -144,7 +144,7 @@ char *_dup_chars(char *, int, int);
 char *_find_path(info_t *, char *, char *);
 
 
-/* _hsh_.c */
+/* _hs_loop.c */
 int _hsh_(info_t *, char **);
 int f_builtin(info_t *);
 void f_cmd(info_t *);
@@ -221,12 +221,16 @@ int read_history(info_t *info);
 int build_history_list(info_t *info, char *buf, int linecount);
 int renumber_history(info_t *info);
 
+/* loophsh.c */
+int loophsh(char **);
+
 
 /* ........... _error_.c .............. */
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
+
 
 /* ........ _envio_.c ............. */
 char *_getenv(info_t *, const char *);
@@ -239,6 +243,8 @@ int populate_env_list(info_t *);
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
+
+
 
 #endif
 
