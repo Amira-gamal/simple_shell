@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * main - entry point
@@ -39,7 +39,6 @@ int main(int ac, char **av)
 	}
 	populate_env_list(info);
 	read_history(info);
-	_hsh_(info, av);
+	hsh(info, av);
 	return (EXIT_SUCCESS);
 }
-

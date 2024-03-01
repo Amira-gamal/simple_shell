@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _myenv - prints the current environment
@@ -90,4 +90,3 @@ int populate_env_list(info_t *info)
 	info->env = node;
 	return (0);
 }
-

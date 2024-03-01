@@ -1,17 +1,18 @@
-#include "main.h"
+#include "shell.h"
+
 /**
- * _is_cmd - determines if a file is an executable command
- * @f: the info struct
- * @p: path to the file
+ * is_cmd - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
  *
  * Return: 1 if true, 0 otherwise
  */
-int _is_cmd(info_t *f, char *p)
+int is_cmd(info_t *info, char *path)
 {
 	struct stat st;
 
-	(void)f;
-	if (!p || stat(p, &st))
+	(void)info;
+	if (!path || stat(path, &st))
 		return (0);
 
 	if (st.st_mode & S_IFREG)
@@ -22,60 +23,60 @@ int _is_cmd(info_t *f, char *p)
 }
 
 /**
- * _dup_chars - duplicates characters
- * @pstr: the PATH string
- * @str: starting index
- * @st: stopping index
+ * dup_chars - duplicates characters
+ * @pathstr: the PATH string
+ * @start: starting index
+ * @stop: stopping index
  *
  * Return: pointer to new buffer
  */
-char *_dup_chars(char *pstr, int str, int st)
+char *dup_chars(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
 	int i = 0, k = 0;
 
-	for (k = 0, i = str; i < st; i++)
-		if (pstr[i] != ':')
-			buf[k++] = pstr[i];
+	for (k = 0, i = start; i < stop; i++)
+		if (pathstr[i] != ':')
+			buf[k++] = pathstr[i];
 	buf[k] = 0;
 	return (buf);
 }
 
 /**
- * _find_path - finds this cmd in the PATH string
+ * find_path - finds this cmd in the PATH string
  * @info: the info struct
  * @pathstr: the PATH string
  * @cmd: the cmd to find
  *
  * Return: full path of cmd if found or NULL
  */
-char *_find_path(info_t *f, char *pstr, char *c)
+char *find_path(info_t *info, char *pathstr, char *cmd)
 {
 	int i = 0, curr_pos = 0;
-	char *p;
+	char *path;
 
-	if (!pstr)
+	if (!pathstr)
 		return (NULL);
-	if ((_strlen(c) > 2) && starts_with(c, "./"))
+	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
-		if (_is_cmd(f, c))
-			return (c);
+		if (is_cmd(info, cmd))
+			return (cmd);
 	}
 	while (1)
 	{
-		if (!pstr[i] || pstr[i] == ':')
+		if (!pathstr[i] || pathstr[i] == ':')
 		{
-			p = _dup_chars(pstr, curr_pos, i);
-			if (!*p)
-				_strcat(p, c);
+			path = dup_chars(pathstr, curr_pos, i);
+			if (!*path)
+				_strcat(path, cmd);
 			else
 			{
-				_strcat(p, "/");
-				_strcat(p, c);
+				_strcat(path, "/");
+				_strcat(path, cmd);
 			}
-			if (_is_cmd(f, p))
-				return (p);
-			if (!pstr[i])
+			if (is_cmd(info, path))
+				return (path);
+			if (!pathstr[i])
 				break;
 			curr_pos = i;
 		}
@@ -83,4 +84,3 @@ char *_find_path(info_t *f, char *pstr, char *c)
 	}
 	return (NULL);
 }
-

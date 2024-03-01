@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  *_eputs - prints an input string
@@ -83,4 +83,3 @@ int _putsfd(char *str, int fd)
 	}
 	return (i);
 }
-
